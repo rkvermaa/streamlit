@@ -109,7 +109,7 @@ with st.form('blog_form'):
     if submitted_outline and openai_api_key_title.startswith(openai_api_key):
         blog_outline_generated = generate_blog_outline(title_text_blog, about_us_generated)
 
-    if submitted_complete and openai_api_key_title.startswith('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'):
+    if submitted_complete and openai_api_key_title.startswith(openai_api_key):
         response_complete_blog = generate_complete_blog(title_text_blog, blog_outline_generated, keywords_generated)
 
     # Container to store and display outputs
