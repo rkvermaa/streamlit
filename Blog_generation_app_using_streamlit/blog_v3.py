@@ -11,6 +11,7 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Set Streamlit page configuration
 st.set_page_config(page_title="🦜🔗 Blog Outline Generator App", layout="wide")
+st.write(f"OpenAI API Key: {openai_api_key}")
 
 
 # Title and OpenAI API key input in the sidebar
