@@ -4,6 +4,8 @@ from langchain import PromptTemplate
 
 
 
+
+
 # Set Streamlit page configuration
 st.set_page_config(page_title="🦜🔗 Blog Outline Generator App", layout="wide")
 
