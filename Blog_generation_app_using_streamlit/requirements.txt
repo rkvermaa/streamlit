@@ -1,5 +1,5 @@
 ﻿aiohttp==3.7.4
-aiosignal @ file:///tmp/build/80754af9/aiosignal_1637843061372/work
+aiosignal==1.2.0  # Replace with the version you need
 altair==5.1.2
 annotated-types==0.6.0
 anyio==3.7.1
