@@ -1,6 +1,9 @@
 import streamlit as st
 from langchain.llms import OpenAI
 from langchain import PromptTemplate
+import subprocess
+subprocess.call(['pip', 'install', '-r', 'requirements.txt'])
+
 
 
 
