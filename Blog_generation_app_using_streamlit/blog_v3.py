@@ -1,13 +1,14 @@
 import streamlit as st
 from langchain.llms import OpenAI
 from langchain import PromptTemplate
+import os 
 
 
 
-
-
+openai_api_key = os.getenv("OPENAI_API_KEY")
 # Set Streamlit page configuration
 st.set_page_config(page_title="🦜🔗 Blog Outline Generator App", layout="wide")
+
 
 
 # Title and OpenAI API key input in the sidebar
@@ -17,7 +18,7 @@ st.title('🦜🔗 Blog Outline Generator App')
 st.sidebar.title('Generate Blog Title')
 openai_api_key_title = st.sidebar.text_input('OpenAI API Key', type='password')
 
-if not openai_api_key_title.startswith('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'):
+if not openai_api_key_title.startswith(openai_api_key):
     st.sidebar.warning('Please enter your OpenAI API key for title generation!', icon='⚠')
 else:
     st.sidebar.success('API key verified!', icon='✅')
@@ -90,7 +91,7 @@ with st.sidebar.form('title_form'):
     
     submitted_title = st.form_submit_button('Generate Title')
 
-    if submitted_title and openai_api_key_title.startswith('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'):
+    if submitted_title and openai_api_key_title.startswith(openai_api_key):
         title_response, about_us_generated, keywords_generated = generate_title_response(selected_value, about_us, keywords)
 
 # Second column for generating the complete blog based on the generated title
@@ -103,10 +104,10 @@ with st.form('blog_form'):
     submitted_complete = col2.form_submit_button('Complete Blog')
     submitted_summary = col3.form_submit_button('Summary')
 
-    if submitted_outline and openai_api_key_title.startswith('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'):
+    if submitted_outline and openai_api_key_title.startswith(openai_api_key):
         blog_outline_generated = generate_blog_outline(title_text_blog, about_us_generated)
 
-    if submitted_complete and openai_api_key_title.startswith('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'):
+    if submitted_complete and openai_api_key_title.startswith(openai_api_key):
         response_complete_blog = generate_complete_blog(title_text_blog, blog_outline_generated, keywords_generated)
 
     # Container to store and display outputs
@@ -127,3 +128,4 @@ if clear_button:
     st.session_state.outputs = []  # Clear the stored outputs
     st.empty()
     st.experimental_rerun()
+ 
